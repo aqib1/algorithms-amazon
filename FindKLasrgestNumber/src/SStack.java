@@ -52,4 +52,16 @@ public class SStack<T> extends Stack<T> {
 
 	}
 
+	public static void main(String[] args) {
+		SStack<Integer> sStack = new SStack<>();
+		
+		sStack.push(2);
+		sStack.push(112);
+		sStack.push(1);
+		System.out.println(sStack.getMin());
+		System.out.println(sStack.pop());
+		System.out.println(sStack.pop());
+		System.out.println(sStack.pop());
+		System.out.println(sStack.isEmpty());
+	}
 }
