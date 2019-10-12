@@ -34,6 +34,7 @@ class LinkedList<T> {
 	public T poll() {
 		Node<T> pollNode = start;
 		start = start.next;
+		start.previous = null;
 		return pollNode.value;
 	}
 
