@@ -6,7 +6,7 @@ public class NRepeatedCharacterFromString {
 
 	public static void main(String[] args) {
 		String line = "this is a pen. this is my pen.";
-		char c = findNRepeatedCharacterFromString(4, line);
+		char c = findNRepeatedCharacterFromString(1, line);
 		System.out.println(c);
 		c = findFirstRepeatedCharacterFromString(line);
 		System.out.println(c);

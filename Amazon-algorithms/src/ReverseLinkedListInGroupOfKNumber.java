@@ -20,6 +20,27 @@ class LinkedList<T> {
 		end = end.next;
 	}
 
+	private void addStart(T t) {
+		start.previous = new Node<>(t);
+		start.previous.next = start;
+		start = start.previous;
+	}
+
+	public LinkedList<T> reverseKNumber(int k) {
+		LinkedList<T> reverseList = new LinkedList<>();
+		Node<T> temp = this.end;
+		while (!Objects.isNull(temp)) {
+			if (k != 0) {
+				reverseList.push(temp.value);
+				--k;
+			} else {
+				reverseList.addStart(temp.value);
+			}
+			temp = temp.previous;
+		}
+		return reverseList;
+	}
+
 	private void addFirst(T t) {
 		start = new Node<>(t);
 		end = start;
@@ -28,6 +49,7 @@ class LinkedList<T> {
 	public T pop() {
 		Node<T> popNode = end;
 		end = end.previous;
+		end.next = null;
 		return popNode.value;
 	}
 
@@ -42,28 +64,28 @@ class LinkedList<T> {
 	public String toString() {
 		Node<T> temp = end;
 		String data = "";
-		if(!Objects.isNull(temp))
+		if (!Objects.isNull(temp))
 			data = "[";
 		while (!Objects.isNull(temp)) {
 			data += temp.value + ", ";
 			temp = temp.previous;
 		}
-		if(!data.isEmpty())
-		data = data.substring(0, data.length() - 2) + "]";
+		if (!data.isEmpty())
+			data = data.substring(0, data.length() - 2) + "]";
 		return data;
 	}
-	
+
 	public String fifoString() {
 		Node<T> temp = start;
 		String data = "";
-		if(!Objects.isNull(temp))
+		if (!Objects.isNull(temp))
 			data = "[";
 		while (!Objects.isNull(temp)) {
 			data += temp.value + ", ";
 			temp = temp.next;
 		}
-		if(!data.isEmpty())
-		data = data.substring(0, data.length() - 2) + "]";
+		if (!data.isEmpty())
+			data = data.substring(0, data.length() - 2) + "]";
 		return data;
 	}
 
@@ -124,7 +146,6 @@ public class ReverseLinkedListInGroupOfKNumber {
 		li.push(3);
 		li.push(4);
 		li.push(5);
-		li.poll();
-		System.out.println(li);
+		System.out.println(li.reverseKNumber(3));
 	}
 }
